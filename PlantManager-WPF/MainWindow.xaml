@@ -9,7 +9,7 @@
     <Grid>
         <Menu x:Name="menu" VerticalAlignment="Top" Height="{DynamicResource {x:Static SystemParameters.MenuBarHeightKey}}" Grid.ColumnSpan="2">
             <MenuItem Header="Fichier" Name="mnuFile">
-                <MenuItem x:Name="mnuQuit" Header="Quitter"/>
+                <MenuItem x:Name="mnuQuit" Header="Quitter" Click="mnuQuit_Click"/>
             </MenuItem>
             <MenuItem Header="Options" Name="mnuOptions">
                 <MenuItem x:Name="mnuManageShapes" Header="Formes"/>
@@ -22,9 +22,9 @@
 
             <MenuItem/>
         </Menu>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="butSearch" Content="Recherche" Margin="175,27,0,0" HorizontalAlignment="Left" Width="85" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,20" Width="74" Height="20" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="txtSearchField" HorizontalAlignment="Left" Height="23" Margin="10,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+        <Button x:Name="butSearch" Content="Recherche" Margin="175,27,0,0" HorizontalAlignment="Left" Width="85" Height="20" VerticalAlignment="Top" Click="butSearch_Click"/>
+        <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,20" Width="74" Height="20" VerticalAlignment="Bottom" Click="butAdd_Click"/>
         <Button x:Name="butDelete" Content="Supprimer" HorizontalAlignment="Left" Margin="186,0,0,20" Width="74" Height="20" VerticalAlignment="Bottom"/>
         <TabControl x:Name="tcPlant" Margin="265,26,10,45">
             <TabItem x:Name="tpGeneral" Header="General">
@@ -36,7 +36,7 @@
                     <Label x:Name="lblName_Copy3" Content="Description :" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblName" Content="Nom_De_La_Plante" HorizontalAlignment="Left" Margin="91,11,0,0" VerticalAlignment="Top" Width="205"/>
                     <Image x:Name="imgImage" Margin="301,11,10,119" MouseDown="imgImage_MouseDown"/>
-                    <ComboBox x:Name="cbGenus" HorizontalAlignment="Left" Margin="91,42,0,0" VerticalAlignment="Top" Width="205"/>
+                    <ComboBox x:Name="cbGenus" HorizontalAlignment="Left" Margin="91,42,0,0" VerticalAlignment="Top" Width="205" DisplayMemberPath="Name" SelectedValuePath="Id"/>
                     <TextBox x:Name="txtSpecies" HorizontalAlignment="Left" Height="23" Margin="91,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
                     <TextBox x:Name="txtCultivar" HorizontalAlignment="Left" Height="23" Margin="91,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205"/>
                     <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="91,141,0,10" TextWrapping="Wrap" Text="TextBox" Width="205"/>

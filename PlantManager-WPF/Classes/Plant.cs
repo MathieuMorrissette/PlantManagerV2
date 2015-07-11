@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Media.Imaging;
@@ -114,9 +115,22 @@ namespace PlantManager_WPF
 
         public static Plant[] GetAllPlantByNameContains(string searchString)
         {
-            DataTable dtPlants = Db.Query("SELECT * FROM Plants WHERE(PlantName LIKE ?)", "%" + searchString + "%");
+            DataTable dtPlants = Db.Query("SELECT * FROM Plants");
 
-            return (from DataRow row in dtPlants.Rows select new Plant(Convert.ToInt32(row["PlantID"]))).ToArray();
+            List<Plant> lstPlants = new List<Plant>();
+
+            for (int i = 0; i < dtPlants.Rows.Count; i++)
+            {
+                DataRow row = dtPlants.Rows[i];
+                Plant plant = new Plant(Convert.ToInt32(row["PlantID"]));
+
+                if (plant.Name.Contains(searchString))
+                {
+                    lstPlants.Add(plant);
+                }
+            }
+
+            return lstPlants.ToArray();
         }
 
         public static void DeletePlantById(int id)

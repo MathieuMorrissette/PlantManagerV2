@@ -36,7 +36,7 @@ namespace PlantManager_WPF
             ReloadListView();
 
             //Charger les informations dans le combobox des genres.
-            //LoadGenusCombo();
+            LoadGenusCombo();
 
             //LoadHardinessZonesCombo();
 
@@ -53,6 +53,16 @@ namespace PlantManager_WPF
 
             //Cacher le TabControl.
             tcPlant.Visibility = Visibility.Hidden;
+        }
+
+        private void LoadGenusCombo()
+        {
+            Genus[] genuses = Genus.GetAllGenus();
+
+            cbGenus.ItemsSource = genuses;
+
+            if (_mCurrentPlant != null)
+                cbGenus.SelectedValue = _mCurrentPlant.Genus.Id;
         }
 
         private void btAddImage_Click(object sender, RoutedEventArgs e)
@@ -126,9 +136,16 @@ namespace PlantManager_WPF
             if (_mCurrentPlant.Images.Length > 0)
             {
 
-                Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate {
+                Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate
+                {
                     imgImage.Source = _mCurrentPlant.Images[0];
-                imgImage.Tag = 0;
+                    imgImage.Tag = 0;
+                }, null);
+            }
+            else
+            {                Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate
+                {
+                imgImage.Source = null;
                 }, null);
             }
         }
@@ -137,9 +154,7 @@ namespace PlantManager_WPF
         {
             if (lstPlants.SelectedItems.Count > 0)
             {
-
-                // string plantId = lstPlants.Items[lstPlants.SelectedIndices[0]].SubItems[0].Text;
-                Plant maPlante = (Plant)lstPlants.SelectedItem;//Plant.GetPlantById(Convert.ToInt32(plantId));
+                Plant maPlante = (Plant)lstPlants.SelectedItem;
 
                 //Afficher un message si les modifications n'ont pas ete enregistres.
                 _mCurrentPlant = maPlante;
@@ -163,6 +178,7 @@ namespace PlantManager_WPF
         {
             if (_mCurrentPlant == null) return;
 
+            if (_mCurrentPlant.Images.Length == 0) return;
             int currentImage = (int)imgImage.Tag;
 
             if (currentImage + 1 >= _mCurrentPlant.Images.Length)
@@ -182,6 +198,8 @@ namespace PlantManager_WPF
         {
             if (_mCurrentPlant == null) return;
 
+
+            if (_mCurrentPlant.Images.Length == 0) return;
             int currentImage = (int)imgImage.Tag;
 
             if (currentImage - 1 < 0)
@@ -201,9 +219,41 @@ namespace PlantManager_WPF
         {
             if (e.ClickCount == 2)
             {
-                ViewPicture view = new ViewPicture(_mCurrentPlant.Name, ((Image)sender).Source);
-                view.ShowDialog();
+                try
+                {
+                    ViewPicture view = new ViewPicture(_mCurrentPlant.Name, ((Image)sender).Source);
+                    view.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+        }
+
+        private void mnuQuit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void butSearch_Click(object sender, RoutedEventArgs e)
+        {
+            tcPlant.Visibility = Visibility.Hidden;
+            Plant[] plants = Plant.GetAllPlantByNameContains(txtSearchField.Text);
+
+            lstPlants.Items.Clear();
+
+            foreach (Plant plant in plants)
+            {
+                lstPlants.Items.Add(plant);
+            }
+        }
+
+        private void butAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlantWindow addPlantForm = new AddPlantWindow();
+            addPlantForm.ShowDialog();
+            ReloadListView();
         }
     }
 }
