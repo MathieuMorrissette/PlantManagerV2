@@ -255,5 +255,31 @@ namespace PlantManager_WPF
             addPlantForm.ShowDialog();
             ReloadListView();
         }
+
+        private void butDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstPlants.SelectedItems.Count <= 0) return;
+
+            Plant plant = (Plant)lstPlants.SelectedItem;
+
+            if (plant.Id.ToString() == _mCurrentPlant.Id.ToString())
+            {
+                _mCurrentPlant = null;
+                tcPlant.Visibility = Visibility.Hidden;
+            }
+
+            Plant.DeletePlantById(plant.Id);
+            ReloadListView();
+        }
+
+        private void txtWidth_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = (int)e.Key >= 43 || (int)e.Key <= 34;
+        }
+
+        private void txtHeight_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = (int)e.Key >= 43 || (int)e.Key <= 34;
+        }
     }
 }
