@@ -44,17 +44,11 @@ namespace PlantManager_WPF
 
         public static byte[] imageToByteArray(BitmapImage imageSource)
         {
-            Stream stream = imageSource.StreamSource;
-            Byte[] buffer = null;
-            if (stream != null && stream.Length > 0)
-            {
-                using (BinaryReader br = new BinaryReader(stream))
-                {
-                    buffer = br.ReadBytes((Int32)stream.Length);
-                }
-            }
-
-            return buffer;
+            MemoryStream memStream = new MemoryStream();
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageSource));
+            encoder.Save(memStream);
+            return memStream.GetBuffer();
         }
 
         public static BitmapImage byteArrayToImage(byte[] bytes)

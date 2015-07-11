@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -63,7 +64,7 @@ namespace PlantManager_WPF
 
             ImagePlant.AddImage(_mCurrentPlant.Id, dlg.FileName);
 
-             // ShowPlantImage();
+            ShowPlantImage();
 
              // CheckControlsStates();
         }

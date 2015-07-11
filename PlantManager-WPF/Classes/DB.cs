@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.SQLite;
 using System.Windows;
 
@@ -19,55 +20,70 @@ namespace PlantManager_WPF
         private static void Connect()
         {
             _dbConnection = new SQLiteConnection(ConnectionString);
+            _dbConnection.Open();
         }
 
         public static DataTable Query(string request, params string[] parameters)
         {
             EnsureConnected();
 
-            SQLiteCommand command = new SQLiteCommand(_dbConnection);
-            command.CommandText = request;
+            DataTable dTable = new DataTable();
 
-            foreach (string parameter in parameters)
+            using (DbTransaction trans = _dbConnection.BeginTransaction())
             {
-                command.Parameters.Add(new SQLiteParameter("", parameter));
+                using (DbCommand command = _dbConnection.CreateCommand())
+                {
+                    command.CommandText = request;
+                    foreach (string parameter in parameters)
+                    {
+                        command.Parameters.Add(new SQLiteParameter("", parameter));
+                    }
+
+                    DbDataReader reader = command.ExecuteReader();
+                    dTable.Load(reader);
+                }
+
+                trans.Commit();
             }
 
-            _dbConnection.Open();
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            DataTable dTable = new DataTable();
-            dTable.Load(reader);
-            _dbConnection.Close();
             return dTable;
         }
 
         public static DataRow QueryFirst(string request, params string[] parameters)
         {
             EnsureConnected();
-            SQLiteCommand command = new SQLiteCommand(_dbConnection);
-            command.CommandText = request;
 
-            foreach (string parameter in parameters)
+            DataTable dTable = null;
+
+            using (DbTransaction trans = _dbConnection.BeginTransaction())
             {
-                command.Parameters.Add(new SQLiteParameter("", parameter));
+                using (DbCommand command = _dbConnection.CreateCommand())
+                {
+                    command.CommandText = request;
+                    foreach (string parameter in parameters)
+                    {
+                        command.Parameters.Add(new SQLiteParameter("", parameter));
+                    }
+
+                    var reader = command.ExecuteReader(CommandBehavior.SingleRow);
+                    dTable = new DataTable();
+                    dTable.Load(reader);
+                }
+
+                trans.Commit();
             }
 
-            try
+            if (dTable == null)
             {
-                _dbConnection.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                return null;
             }
 
-            SQLiteDataReader reader = command.ExecuteReader(CommandBehavior.SingleRow);
-            DataTable dTable = new DataTable();
-            dTable.Load(reader);
-            _dbConnection.Close();
+            if (dTable.Rows.Count == 0)
+            {
+                return null;
+            }
 
-            return dTable.Rows.Count == 0 ? null : dTable.Rows[0];
+            return dTable.Rows[0];
         }
 
         /* public static void CreateDatabase()
@@ -86,11 +102,11 @@ namespace PlantManager_WPF
                 command.Parameters.Add(new SQLiteParameter("", parameter));
             }
 
-            _dbConnection.Open();
+            //_dbConnection.Open();
 
             command.ExecuteNonQuery();
 
-            _dbConnection.Close();
+           // _dbConnection.Close();
         }
     }
 }

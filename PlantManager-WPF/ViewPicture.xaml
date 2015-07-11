@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlantManager_WPF"
         mc:Ignorable="d"
-        Title="ViewPicture" Height="300" Width="300">
+        Title="ViewPicture" Height="300" Width="300" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Image x:Name="image"/>
 
