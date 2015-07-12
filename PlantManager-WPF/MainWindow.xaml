@@ -51,6 +51,16 @@
                     <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
                     <TextBox x:Name="txtHeight" HorizontalAlignment="Left" Height="23" Margin="71,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtHeight_KeyDown"/>
                     <TextBox x:Name="txtWidth" HorizontalAlignment="Left" Height="23" Margin="71,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtWidth_KeyDown"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="158,232,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.208,5.409"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="146,292,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="13,93,0,0" VerticalAlignment="Top" Width="178"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="0,292,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="13,146,0,0" VerticalAlignment="Top" Width="178"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="135,206,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,67,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,120,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="23,236,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,173,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>
