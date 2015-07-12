@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace PlantManager_WPF
 {
     /// <summary>
     /// Interaction logic for ViewPicture.xaml
     /// </summary>
-    public partial class ViewPicture : Window
+    public partial class ViewPicture : MetroWindow
     {
         public ViewPicture(string name, ImageSource picture)
         {

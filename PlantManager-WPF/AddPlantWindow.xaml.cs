@@ -11,13 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace PlantManager_WPF
 {
     /// <summary>
     /// Interaction logic for AddPlantWindow.xaml
     /// </summary>
-    public partial class AddPlantWindow : Window
+    public partial class AddPlantWindow : MetroWindow
     {
         public AddPlantWindow()
         {
