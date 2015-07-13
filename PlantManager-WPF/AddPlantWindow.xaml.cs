@@ -44,6 +44,12 @@ namespace PlantManager_WPF
 
         private void butAdd_Click(object sender, RoutedEventArgs e)
         {
+            if (txtSpecies.Text.Length < 1)
+            {
+                MessageBox.Show(Constants.DialogNameCannotBeBlank);
+                return;
+            }
+
             Plant.AddPlant(((Genus)cbGenus.SelectedItem).Id, txtSpecies.Text, txtCultivar.Text, txtDescription.Text);
             Close();
         }

@@ -44,8 +44,8 @@
                     <Label x:Name="lblName" Content="Nom_De_La_Plante" HorizontalAlignment="Left" Margin="91,11,0,0" VerticalAlignment="Top" Width="205"/>
                     <Image x:Name="imgImage" Margin="301,11,10,119" MouseDown="imgImage_MouseDown"/>
                     <ComboBox x:Name="cbGenus" HorizontalAlignment="Left" Margin="91,42,0,0" VerticalAlignment="Top" Width="205" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="CheckChanges"/>
-                    <TextBox x:Name="txtSpecies" HorizontalAlignment="Left" Height="23" Margin="91,69,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
-                    <TextBox x:Name="txtCultivar" HorizontalAlignment="Left" Height="23" Margin="91,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
+                    <TextBox x:Name="txtSpecies" HorizontalAlignment="Left" Height="23" Margin="91,69,0,0"  Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
+                    <TextBox x:Name="txtCultivar" HorizontalAlignment="Left" Height="23" Margin="91,97,0,0" Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
                     <TextBox x:Name="txtDescription" Margin="10,155,0,47" TextWrapping="Wrap" Text="TextBox" TextChanged="CheckChanges" HorizontalAlignment="Left" Width="286"/>
                     <Button x:Name="btLeftImage" Content="&lt;" Margin="301,0,0,85" Height="29" VerticalAlignment="Bottom" Click="btLeftImage_Click" HorizontalAlignment="Left" Width="75"/>
                     <Button x:Name="btRightImage" Content="&gt;" Margin="0,0,10,85" HorizontalAlignment="Right" Width="75" Height="29" VerticalAlignment="Bottom" Click="btRightImage_Click"/>
@@ -73,12 +73,12 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="478,0,186,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
+        <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="455,0,163,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
         <ListView x:Name="lstPlants" HorizontalAlignment="Left" Margin="10,66,0,53" Width="250" SelectionChanged="lstPlants_SelectionChanged" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="0"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="245"/>
                 </GridView>
             </ListView.View>
             <ListView.Resources>

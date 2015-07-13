@@ -31,7 +31,7 @@ namespace PlantManager_WPF
 
         private void butAdd_Click(object sender, RoutedEventArgs e)
         {
-            if (txtName.Text != string.Empty)
+            if (!string.IsNullOrWhiteSpace(txtName.Text))
                 Shape.AddShape(txtName.Text);
 
             txtName.Text = string.Empty;
