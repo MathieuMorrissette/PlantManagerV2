@@ -13,7 +13,7 @@
 
         Style="{DynamicResource CleanWindowStyleKey}"
         Title="PlantManager WPF" Height="510" Width="850" BorderThickness="0">
-    
+
     <Grid>
         <Menu x:Name="menu" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Fichier" Name="mnuFile">
@@ -54,20 +54,20 @@
             </TabItem>
             <TabItem x:Name="tpDetail" Header="Détails">
                 <Grid Background="#FFE5E5E5">
-                    <Controls:NumericUpDown Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,331,327"/>
-                    <Label Content="Hauteur :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="59"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="158,232,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.208,5.409"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="146,292,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="23,98,0,0" VerticalAlignment="Top" Width="178"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="0,292,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="13,146,0,0" VerticalAlignment="Top" Width="178"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="135,206,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="59"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="276,154,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="23,236,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,173,0,0" VerticalAlignment="Top"/>
-                    <Controls:NumericUpDown Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,331,296"/>
+                    <Controls:NumericUpDown x:Name="nudHeight" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,331,0" VerticalAlignment="Top"/>
+                    <Label Content="Hauteur :" Margin="10,10,492,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" Margin="10,41,492,0" VerticalAlignment="Top"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbPlantTypes" HorizontalAlignment="Left" Margin="23,289,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="1.208,5.409"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id"  x:Name="cbSoilTypes" HorizontalAlignment="Left" Margin="276,41,0,0" VerticalAlignment="Top" Width="207"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbHardinessZones" HorizontalAlignment="Left" Margin="23,103,0,0" VerticalAlignment="Top" Width="207"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbShapes" HorizontalAlignment="Left" Margin="23,227,0,0" VerticalAlignment="Top" Width="207"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbSunLevels" HorizontalAlignment="Left" Margin="23,165,0,0" VerticalAlignment="Top" Width="207"/>
+                    <Label Content="Type de plante :" HorizontalAlignment="Left" Margin="13,258,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Label Content="Zone de rusticité :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="220"/>
+                    <Label Content="Niveau d'ensoleillement :" HorizontalAlignment="Left" Margin="13,134,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Forme :" HorizontalAlignment="Left" Margin="13,196,0,0" VerticalAlignment="Top" Width="217"/>
+                    <Label Content="Type de sol :" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top"/>
+                    <Controls:NumericUpDown x:Name="nudWidth" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,331,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

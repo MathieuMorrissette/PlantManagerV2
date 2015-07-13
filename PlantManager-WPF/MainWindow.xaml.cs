@@ -39,21 +39,102 @@ namespace PlantManager_WPF
             //Charger les informations dans le combobox des genres.
             LoadGenusCombo();
 
-            //LoadHardinessZonesCombo();
+            LoadHardinessZonesCombo();
 
-            //LoadSunLevelsCombo();
+            LoadSunLevelsCombo();
 
-            //LoadShapesCombo();
+            LoadShapesCombo();
 
-            //LoadPlantTypesCombo();
+            LoadPlantTypesCombo();
 
-            //LoadSoilTypesCombo();
+            LoadSoilTypesCombo();
 
             //Desactiver le bouton pour sauvegarder les changements.
             butSaveChanges.IsEnabled = false;
 
             //Cacher le TabControl.
             tcPlant.Visibility = Visibility.Hidden;
+        }
+
+        private void LoadHardinessZonesCombo()
+        {
+            HardinessZone[] hardinessZones = HardinessZone.GetAllHardinessZones();
+
+            cbHardinessZones.ItemsSource = hardinessZones;
+
+            if (_mCurrentPlant != null)
+            {
+                cbHardinessZones.SelectedValue = _mCurrentPlant.HardZone.Id;
+            }
+            else
+            {
+                cbHardinessZones.SelectedValue = HardinessZone.GetDefaultHardinessZone().Id;
+            }
+        }
+
+        private void LoadSunLevelsCombo()
+        {
+            SunLevel[] sunLevels = SunLevel.GetAllSunLevels();
+
+            cbSunLevels.ItemsSource = sunLevels;
+
+            if (_mCurrentPlant != null)
+            {
+                cbSunLevels.SelectedValue = _mCurrentPlant.SunLvl.Id;
+            }
+            else
+            {
+                cbSunLevels.SelectedValue = SunLevel.GetDefaultSunLevel().Id;
+            }
+        }
+
+        private void LoadPlantTypesCombo()
+        {
+            PlantType[] plantTypes = PlantType.GetAllPlantTypes();
+
+            cbPlantTypes.ItemsSource = plantTypes;
+
+            if (_mCurrentPlant != null)
+            {
+                cbPlantTypes.SelectedValue = _mCurrentPlant.PlantType.Id;
+            }
+            else
+            {
+                cbPlantTypes.SelectedValue = PlantType.GetDefaultPlantType().Id;
+            }
+        }
+
+        private void LoadShapesCombo()
+        {
+            Shape[] shapes = Shape.GetAllShapes();
+
+            cbShapes.ItemsSource = shapes;
+
+
+            if (_mCurrentPlant != null)
+            {
+                cbShapes.SelectedValue = _mCurrentPlant.Shape.Id;
+            }
+            else
+            {
+                cbShapes.SelectedValue = Shape.GetDefaultShape().Id;
+            }
+        }
+
+        private void LoadSoilTypesCombo()
+        {
+            SoilType[] soilTypes = SoilType.GetAllSoilTypes();
+
+            cbSoilTypes.ItemsSource = soilTypes;
+
+            if (_mCurrentPlant != null)
+            {
+                cbSoilTypes.SelectedValue = _mCurrentPlant.SoilType.Id;
+            }
+            else
+            {
+                cbSoilTypes.SelectedValue = SoilType.GetDefaultSoilType().Id;
+            }
         }
 
         private void LoadGenusCombo()
@@ -63,7 +144,13 @@ namespace PlantManager_WPF
             cbGenus.ItemsSource = genuses;
 
             if (_mCurrentPlant != null)
+            {
                 cbGenus.SelectedValue = _mCurrentPlant.Genus.Id;
+            }
+            else
+            {
+                cbGenus.SelectedValue = Genus.GetDefaultGenus().Id;
+            }
         }
 
         private void btAddImage_Click(object sender, RoutedEventArgs e)
@@ -77,7 +164,7 @@ namespace PlantManager_WPF
 
             ShowPlantImage();
 
-             // CheckControlsStates();
+            CheckControlsStates();
         }
 
         private void ReloadListView()
@@ -98,13 +185,15 @@ namespace PlantManager_WPF
         public void RefreshPlant()
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { tcPlant.Visibility = Visibility.Hidden; }, null);
+
             Thread.Sleep(100);
-            //pbImage.Image = null;
+
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { txtDescription.Text = string.Empty; }, null);
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { lblName.Content = string.Empty; }, null);
 
-            //udHeight.Value = 0;
-            //udWidth.Value = 0;
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { nudHeight.Value = 0; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { nudWidth.Value = 0; }, null);
+
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { lblName.Content = _mCurrentPlant.Name; }, null);
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { txtCultivar.Text = _mCurrentPlant.Cultivar; }, null);
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { txtSpecies.Text = _mCurrentPlant.Species; }, null);
@@ -112,22 +201,41 @@ namespace PlantManager_WPF
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { txtDescription.Text = _mCurrentPlant.Description; }, null);
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbGenus.SelectedValue = _mCurrentPlant.Genus.Id; }, null);
 
-            //cbHardinessZones.SelectedValue = _mCurrentPlant.HardZone.Id;
-            //cbSunLevels.SelectedValue = _mCurrentPlant.SunLvl.Id;
-            //cbShapes.SelectedValue = _mCurrentPlant.Shape.Id;
-            //cbPlantTypes.SelectedValue = _mCurrentPlant.PlantType.Id;
-            //cbSoilTypes.SelectedValue = _mCurrentPlant.SoilType.Id;
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbHardinessZones.SelectedValue = _mCurrentPlant.HardZone.Id; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbSunLevels.SelectedValue = _mCurrentPlant.SunLvl.Id; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbShapes.SelectedValue = _mCurrentPlant.Shape.Id; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbPlantTypes.SelectedValue = _mCurrentPlant.PlantType.Id; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { cbSoilTypes.SelectedValue = _mCurrentPlant.SoilType.Id; }, null);
 
-            //udHeight.Value = _mCurrentPlant.Height;
-            //udWidth.Value = _mCurrentPlant.Width;
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { nudHeight.Value = _mCurrentPlant.Height; }, null);
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { nudWidth.Value = _mCurrentPlant.Width; }, null);
 
             ShowPlantImage();
 
-            // this.CheckControlsStates();
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { this.CheckControlsStates(); }, null);
+
             Thread.Sleep(100);
+
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { this.pbLoading.IsIndeterminate = false ; }, null);
             Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate { tcPlant.Visibility = Visibility.Visible; }, null);
 
+        }
+
+        private void CheckControlsStates()
+        {
+            if (_mCurrentPlant != null)
+            {
+                if (_mCurrentPlant.Images.Length > 1)
+                {
+                    btLeftImage.IsEnabled = true;
+                    btRightImage.IsEnabled = true;
+                }
+                else
+                {
+                    btLeftImage.IsEnabled = false;
+                    btRightImage.IsEnabled = false;
+                }
+            }
         }
 
         private void ShowPlantImage()
