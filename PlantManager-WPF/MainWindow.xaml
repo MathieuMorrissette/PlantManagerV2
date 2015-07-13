@@ -8,9 +8,12 @@
         mc:Ignorable="d"
         EnableDWMDropShadow="True" 
         TitleCaps="False"
+        WindowMinButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
+        WindowMaxButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
+
         Style="{DynamicResource CleanWindowStyleKey}"
         Title="PlantManager WPF" Height="510" Width="850" BorderThickness="0">
-
+    
     <Grid>
         <Menu x:Name="menu" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Fichier" Name="mnuFile">
@@ -30,7 +33,7 @@
         <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butAdd_Click"/>
         <Button x:Name="butDelete" Content="Supprimer" HorizontalAlignment="Left" Margin="175,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butDelete_Click"/>
         <TabControl x:Name="tcPlant" Margin="265,26,10,45">
-            <TabItem x:Name="tpGeneral" Header="General">
+            <TabItem x:Name="tpGeneral" Header="Général">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,6">
                     <Label x:Name="noname" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblName_Copy" Content="Genre :" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
@@ -46,24 +49,25 @@
                     <Button x:Name="btLeftImage" Content="&lt;" HorizontalAlignment="Left" Margin="301,0,0,85" Width="75" Height="29" VerticalAlignment="Bottom" Click="btLeftImage_Click"/>
                     <Button x:Name="btRightImage" Content="&gt;" Margin="0,0,10,85" HorizontalAlignment="Right" Width="75" Height="29" VerticalAlignment="Bottom" Click="btRightImage_Click"/>
                     <Button x:Name="btAddImage" Content="Ajouter une image" Margin="301,0,10,47" Height="33" VerticalAlignment="Bottom" Click="btAddImage_Click"/>
+                    <Button x:Name="btDeleteImage" Content="Supprimer" Margin="381,0,95,85" Height="29" VerticalAlignment="Bottom" Width="85" Click="btDeleteImage_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tpDetail" Header="Détails">
                 <Grid Background="#FFE5E5E5">
+                    <Controls:NumericUpDown Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,331,327"/>
                     <Label Content="Hauteur :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txtHeight" HorizontalAlignment="Left" Height="23" Margin="71,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtHeight_KeyDown"/>
-                    <TextBox x:Name="txtWidth" HorizontalAlignment="Left" Height="23" Margin="71,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="txtWidth_KeyDown"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Width="59"/>
                     <ComboBox HorizontalAlignment="Left" Margin="158,232,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.208,5.409"/>
                     <ComboBox HorizontalAlignment="Left" Margin="146,292,0,0" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="13,93,0,0" VerticalAlignment="Top" Width="178"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="23,98,0,0" VerticalAlignment="Top" Width="178"/>
                     <ComboBox HorizontalAlignment="Left" Margin="0,292,0,0" VerticalAlignment="Top" Width="120"/>
                     <ComboBox HorizontalAlignment="Left" Margin="13,146,0,0" VerticalAlignment="Top" Width="178"/>
                     <Label Content="Largeur :" HorizontalAlignment="Left" Margin="135,206,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,67,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,120,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="59"/>
+                    <Label Content="Largeur :" HorizontalAlignment="Left" Margin="276,154,0,0" VerticalAlignment="Top"/>
                     <Label Content="Largeur :" HorizontalAlignment="Left" Margin="23,236,0,0" VerticalAlignment="Top"/>
                     <Label Content="Largeur :" HorizontalAlignment="Left" Margin="13,173,0,0" VerticalAlignment="Top"/>
+                    <Controls:NumericUpDown Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,331,296"/>
                 </Grid>
             </TabItem>
         </TabControl>

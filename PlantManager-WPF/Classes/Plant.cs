@@ -44,18 +44,11 @@ namespace PlantManager_WPF
             get { return GetPlantSpecies();  }
         }
 
-        public BitmapImage[] Images
+        public ImagePlant[] Images
         {
             get
             {
-                ImagePlant[] images = ImagePlant.GetImagesByPlantId(Id);
-
-                if (images != null)
-                {
-                    return images.Select(x => x.Image).ToArray();
-                }
-
-                return new[] { new BitmapImage(new Uri(Constants.ImgPathNotFound)) };
+                return ImagePlant.GetImagesByPlantId(Id);
             }
         }
 

@@ -75,6 +75,11 @@ namespace PlantManager_WPF
             }
         }
 
+        public static void DeleteImage(int ImageId)
+        {
+            Db.Execute("DELETE FROM Images WHERE ImageID = ?", ImageId.ToString());
+        }
+
         public static void DeleteImageByPlantId(int plantId)
         {
             Db.Execute("DELETE FROM Images WHERE ImagePlantID = ?", plantId.ToString());

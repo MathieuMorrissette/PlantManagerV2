@@ -134,21 +134,20 @@ namespace PlantManager_WPF
         {
             if (_mCurrentPlant == null) return;
 
-            if (_mCurrentPlant.Images.Length > 0)
-            {
-
                 Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate
                 {
-                    imgImage.Source = _mCurrentPlant.Images[0];
-                    imgImage.Tag = 0;
+                    if (_mCurrentPlant.Images.Length > 0)
+                    {
+
+                        imgImage.Source = _mCurrentPlant.Images[0].Image;
+                        imgImage.Tag = 0;
+                    }
+                    else
+                    {
+                        imgImage.Source = null;
+                        imgImage.Tag = null;
+                    }
                 }, null);
-            }
-            else
-            {                Dispatcher.BeginInvoke(DispatcherPriority.Background, (SendOrPostCallback)delegate
-                {
-                imgImage.Source = null;
-                }, null);
-            }
         }
 
         private void lstPlants_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -191,7 +190,7 @@ namespace PlantManager_WPF
                 currentImage++;
             }
 
-            imgImage.Source = _mCurrentPlant.Images[currentImage];
+            imgImage.Source = _mCurrentPlant.Images[currentImage].Image;
             imgImage.Tag = currentImage;
         }
 
@@ -212,7 +211,7 @@ namespace PlantManager_WPF
                 currentImage--;
             }
 
-            imgImage.Source = _mCurrentPlant.Images[currentImage];
+            imgImage.Source = _mCurrentPlant.Images[currentImage].Image;
             imgImage.Tag = currentImage;
         }
 
@@ -281,6 +280,22 @@ namespace PlantManager_WPF
         private void txtHeight_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = (int)e.Key >= 43 || (int)e.Key <= 34;
+        }
+
+        private void btDeleteImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (_mCurrentPlant == null) return;
+
+            MessageBoxResult dialogResult = MessageBox.Show("Êtes-vous sûr de vouloir supprimer cette image?", "Attention", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                if(_mCurrentPlant.Images.Length > 0)
+                { 
+                    ImagePlant.DeleteImage(_mCurrentPlant.Images[(int)imgImage.Tag].ImageId);
+                    ShowPlantImage();
+                }
+            }
+            
         }
     }
 }
