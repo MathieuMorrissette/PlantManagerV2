@@ -172,8 +172,6 @@ namespace PlantManager_WPF
         {
             Plant[] plants = Plant.GetAllPlant();
 
-            lstPlants.Items.Clear();
-
             lstPlants.ItemsSource = plants;
         }
 
@@ -344,12 +342,7 @@ namespace PlantManager_WPF
             tcPlant.Visibility = Visibility.Hidden;
             Plant[] plants = Plant.GetAllPlantByNameContains(txtSearchField.Text);
 
-            lstPlants.Items.Clear();
-
-            foreach (Plant plant in plants)
-            {
-                lstPlants.Items.Add(plant);
-            }
+            lstPlants.ItemsSource = plants;
         }
 
         private void butAdd_Click(object sender, RoutedEventArgs e)
