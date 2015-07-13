@@ -28,6 +28,10 @@ namespace PlantManager_WPF
 
             DataRow sunLevel = Db.QueryFirst("SELECT SunLevelName FROM SunLevels WHERE SunLevelID = ?",
                 Id.ToString());
+
+            if (sunLevel == null)
+                return null;
+
             return sunLevel["SunLevelName"].ToString();
         }
 

@@ -70,12 +70,37 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPlantWindow.xaml.cs">
       <DependentUpon>AddPlantWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageGenusWindow.xaml.cs">
+      <DependentUpon>ManageGenusWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageHardinessZonesWindow.xaml.cs">
+      <DependentUpon>ManageHardinessZonesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageSoilTypesWindow.xaml.cs">
+      <DependentUpon>ManageSoilTypesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagePlantTypesWindow.xaml.cs">
+      <DependentUpon>ManagePlantTypesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageSunLevelsWindow.xaml.cs">
+      <DependentUpon>ManageSunLevelsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageShapesWindow.xaml.cs">
+      <DependentUpon>ManageShapesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewPicture.xaml.cs">
       <DependentUpon>ViewPicture.xaml</DependentUpon>
     </Compile>
+    <Page Include="AboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddPlantWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -102,6 +127,30 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManageGenusWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManageHardinessZonesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManageSoilTypesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManagePlantTypesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManageSunLevelsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ManageShapesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

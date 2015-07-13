@@ -1,0 +1,27 @@
+﻿<Controls:MetroWindow x:Class="PlantManager_WPF.ManagePlantTypesWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        EnableDWMDropShadow="True" 
+        TitleCaps="False"
+        Title="Types de plantes" Height="309" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox x:Name="txtName" Height="23" Margin="10,12,60,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="butAdd" Content="+" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="45" Click="butAdd_Click"/>
+        <ListView x:Name="lstItems" Margin="10,43,10,39" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}" SelectionChanged="lstItems_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="0"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+        </ListView>
+        <Button x:Name="butDelete" Content="Supprimer" Margin="10,0,10,5" Height="29" VerticalAlignment="Bottom" Click="butDelete_Click"/>
+
+    </Grid>
+</Controls:MetroWindow>

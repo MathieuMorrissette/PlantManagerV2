@@ -28,6 +28,12 @@ namespace PlantManager_WPF
 
             DataRow plantType = Db.QueryFirst("SELECT PlantTypeName FROM PlantTypes WHERE PlantTypeID = ?",
                 Id.ToString());
+
+            if (plantType == null)
+            {
+                return null;
+            }
+
             return plantType["PlantTypeName"].ToString();
         }
 

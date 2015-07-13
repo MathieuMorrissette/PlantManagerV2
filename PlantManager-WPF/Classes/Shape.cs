@@ -28,6 +28,9 @@ namespace PlantManager_WPF
 
             DataRow shape = Db.QueryFirst("SELECT ShapeName FROM Shapes WHERE ShapeID = ?",
                 Id.ToString());
+
+            if (shape == null)
+                return null;
             return shape["ShapeName"].ToString();
         }
 

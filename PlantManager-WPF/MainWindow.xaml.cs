@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using MahApps.Metro.Controls;
+using System.Diagnostics;
 
 namespace PlantManager_WPF
 {
@@ -173,13 +174,7 @@ namespace PlantManager_WPF
 
             lstPlants.Items.Clear();
 
-            foreach (Plant plant in plants)
-            {
-                string customizeName = string.Empty;
-                if (plant.Genus.Id != Genus.GetDefaultGenus().Id)
-                    customizeName += plant.Genus.Name + " ";
-                lstPlants.Items.Add(plant);
-            }
+            lstPlants.ItemsSource = plants;
         }
 
         public void RefreshPlant()
@@ -405,5 +400,171 @@ namespace PlantManager_WPF
             }
             
         }
+
+        private void butSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            if (_mCurrentPlant == null)
+            {
+                return;
+            }
+            if (txtSpecies.Text.Length < 1)
+            {
+                MessageBox.Show(Constants.DialogNameCannotBeBlank);
+                return;
+            }
+
+            if (txtSpecies.Text != _mCurrentPlant.Name ||
+                txtDescription.Text != _mCurrentPlant.Description || txtSpecies.Text != _mCurrentPlant.Species || (int)cbGenus.SelectedValue != _mCurrentPlant.Genus.Id)
+            {
+                Plant.UpdatePlantBase(_mCurrentPlant.Id, (int)cbGenus.SelectedValue, txtSpecies.Text, txtDescription.Text);
+            }
+
+            if (txtCultivar.Text != _mCurrentPlant.Cultivar)
+                Plant.UpdatePlantCultivar(_mCurrentPlant.Id, txtCultivar.Text);
+
+            if (nudHeight.Value != _mCurrentPlant.Height)
+                Plant.UpdatePlantHeight(_mCurrentPlant.Id, (int)nudHeight.Value);
+
+            if (nudWidth.Value != _mCurrentPlant.Width)
+                Plant.UpdatePlantWidth(_mCurrentPlant.Id, (int)nudWidth.Value);
+
+            if ((int)cbHardinessZones.SelectedValue != _mCurrentPlant.HardZone.Id)
+                Plant.UpdatePlantHardinessZone(_mCurrentPlant.Id, (int)cbHardinessZones.SelectedValue);
+
+            if ((int)cbSunLevels.SelectedValue != _mCurrentPlant.SunLvl.Id)
+                Plant.UpdatePlantSunLevel(_mCurrentPlant.Id, (int)cbSunLevels.SelectedValue);
+
+            if ((int)cbShapes.SelectedValue != _mCurrentPlant.Shape.Id)
+                Plant.UpdatePlantShape(_mCurrentPlant.Id, (int)cbShapes.SelectedValue);
+
+            if ((int)cbPlantTypes.SelectedValue != _mCurrentPlant.PlantType.Id)
+                Plant.UpdatePlantPlantType(_mCurrentPlant.Id, (int)cbPlantTypes.SelectedValue);
+
+            if ((int)cbSoilTypes.SelectedValue != _mCurrentPlant.SoilType.Id)
+                Plant.UpdatePlantSoilType(_mCurrentPlant.Id, (int)cbSoilTypes.SelectedValue);
+
+            butSaveChanges.IsEnabled = false;
+        }
+
+        private void butSearchImage_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://images.google.com/search?tbm=isch&q=" + _mCurrentPlant.Name);
+        }
+
+        private void RefreshName()
+        {
+            lblName.Content = cbGenus.SelectedItem.ToString() + " " + txtSpecies.Text + " " + txtCultivar.Text;
+        }
+
+        private void CheckChanges(object sender, EventArgs e)
+        {
+            if (tcPlant.Visibility == Visibility.Hidden)
+                return;
+
+            bool enableSave = false;
+
+            if (_mCurrentPlant == null)
+                return;
+
+            if (sender is ComboBox && ((ComboBox)sender).SelectedValue == null)
+            {
+                return;
+            }
+
+            if (txtSpecies.Text != _mCurrentPlant.Species || (int)cbGenus.SelectedValue != _mCurrentPlant.Genus.Id || txtCultivar.Text != _mCurrentPlant.Cultivar)
+            {
+                RefreshName();
+            }
+
+            if (txtSpecies.Text != _mCurrentPlant.Species)
+                enableSave = true;
+
+            if (txtDescription.Text != _mCurrentPlant.Description)
+                enableSave = true;
+
+            if ((int)cbGenus.SelectedValue != _mCurrentPlant.Genus.Id)
+                enableSave = true;
+
+            if (txtCultivar.Text != _mCurrentPlant.Cultivar)
+                enableSave = true;
+
+            if (nudHeight.Value != _mCurrentPlant.Height)
+                enableSave = true;
+
+            if (nudWidth.Value != _mCurrentPlant.Width)
+                enableSave = true;
+
+            if ((int)cbHardinessZones.SelectedValue != _mCurrentPlant.HardZone.Id)
+                enableSave = true;
+
+            if ((int)cbSunLevels.SelectedValue != _mCurrentPlant.SunLvl.Id)
+                enableSave = true;
+
+            if ((int)cbShapes.SelectedValue != _mCurrentPlant.Shape.Id)
+                enableSave = true;
+
+            if ((int)cbPlantTypes.SelectedValue != _mCurrentPlant.PlantType.Id)
+                enableSave = true;
+
+            if ((int)cbSoilTypes.SelectedValue != _mCurrentPlant.SoilType.Id)
+                enableSave = true;
+
+            butSaveChanges.IsEnabled = enableSave;
+        }
+
+        private void mnuManageShapes_Click(object sender, RoutedEventArgs e)
+        {
+            ManageShapesWindow manageShapesWindow = new ManageShapesWindow();
+            manageShapesWindow.ShowDialog();
+
+            LoadShapesCombo();
+        }
+
+        private void mnuManageSunLevels_Click(object sender, RoutedEventArgs e)
+        {
+            ManageSunLevelsWindow manageSunLevelsWindow = new ManageSunLevelsWindow();
+            manageSunLevelsWindow.ShowDialog();
+
+            LoadSunLevelsCombo();
+        }
+
+        private void mnuManagePlantTypes_Click(object sender, RoutedEventArgs e)
+        {
+            ManagePlantTypesWindow managePlantTypesWindow = new ManagePlantTypesWindow();
+            managePlantTypesWindow.ShowDialog();
+
+            LoadPlantTypesCombo();
+        }
+
+        private void mnuManageSoilTypes_Click(object sender, RoutedEventArgs e)
+        {
+            ManageSoilTypesWindow manageSoilTypesWindow = new ManageSoilTypesWindow();
+            manageSoilTypesWindow.ShowDialog();
+
+            LoadSoilTypesCombo();
+        }
+
+        private void mnuManageHardinessZones_Click(object sender, RoutedEventArgs e)
+        {
+            ManageHardinessZonesWindow manageHardinessZonesWindow = new ManageHardinessZonesWindow();
+            manageHardinessZonesWindow.ShowDialog();
+
+            LoadHardinessZonesCombo();
+        }
+
+        private void mnuManageGenus_Click(object sender, RoutedEventArgs e)
+        {
+            ManageGenusWindow manageGenusWindow = new ManageGenusWindow();
+            manageGenusWindow.ShowDialog();
+
+            LoadGenusCombo();
+        }
+
+        private void mnuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
+        }
+
     }
 }

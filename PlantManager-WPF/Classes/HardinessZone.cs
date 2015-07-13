@@ -28,6 +28,10 @@ namespace PlantManager_WPF
 
             DataRow plant = Db.QueryFirst("SELECT HardinessZoneName FROM HardinessZones WHERE HardinessZoneID = ?",
                 Id.ToString());
+
+            if (plant == null)
+                return null;
+
             return plant["HardinessZoneName"].ToString();
         }
 

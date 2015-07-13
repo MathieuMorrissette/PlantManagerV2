@@ -1,0 +1,14 @@
+﻿<Controls:MetroWindow x:Class="PlantManager_WPF.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        TitleCaps="False"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="À propos" Height="154" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label  Content="Gestionnaire de plantes V0.9 Alpha"  Margin="57,24,41,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Label  Content="Mathieu Morrissette"  Margin="96,55,80,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <Label  Content="WTPL"  Margin="134,81,118,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Controls:MetroWindow>

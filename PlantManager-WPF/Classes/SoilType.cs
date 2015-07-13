@@ -28,6 +28,10 @@ namespace PlantManager_WPF
 
             DataRow soilType = Db.QueryFirst("SELECT SoilTypeName FROM SoilTypes WHERE SoilTypeID = ?",
                 Id.ToString());
+
+            if (soilType == null)
+                return null;
+
             return soilType["SoilTypeName"].ToString();
         }
 
