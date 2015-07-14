@@ -43,25 +43,25 @@ namespace PlantManager_WPF
         {
             Shape[] shapes = Shape.GetAllShapes();
 
-            lstItems.ItemsSource = shapes;
+            dtgItems.ItemsSource = shapes;
         }
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            Shape.DeleteShapeById(((Shape)lstItems.SelectedItem).Id);
+            Shape.DeleteShapeById(((Shape)dtgItems.SelectedItem).Id);
 
             RefreshList();
         }
 
-        private void lstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             butDelete.IsEnabled = false;
 
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            butDelete.IsEnabled = Convert.ToInt32(((Shape)lstItems.SelectedItem).Id) != -1;
+            butDelete.IsEnabled = Convert.ToInt32(((Shape)dtgItems.SelectedItem).Id) != -1;
         }
     }
 }

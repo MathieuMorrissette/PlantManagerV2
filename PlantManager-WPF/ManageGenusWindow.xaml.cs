@@ -43,25 +43,25 @@ namespace PlantManager_WPF
         {
             Genus[] Genuses = Genus.GetAllGenus();
 
-            lstItems.ItemsSource = Genuses;
+            dtgItems.ItemsSource = Genuses;
         }
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            Genus.DeleteGenusById(((Genus)lstItems.SelectedItem).Id);
+            Genus.DeleteGenusById(((Genus)dtgItems.SelectedItem).Id);
 
             RefreshList();
         }
 
-        private void lstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             butDelete.IsEnabled = false;
 
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            butDelete.IsEnabled = Convert.ToInt32(((Genus)lstItems.SelectedItem).Id) != -1;
+            butDelete.IsEnabled = Convert.ToInt32(((Genus)dtgItems.SelectedItem).Id) != -1;
         }
     }
 }

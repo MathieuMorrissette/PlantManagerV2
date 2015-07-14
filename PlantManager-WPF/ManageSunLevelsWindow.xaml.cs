@@ -43,25 +43,25 @@ namespace PlantManager_WPF
         {
             SunLevel[] shapes = SunLevel.GetAllSunLevels();
 
-            lstItems.ItemsSource = shapes;
+            dtgItems.ItemsSource = shapes;
         }
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            SunLevel.DeleteSunLevelById(((SunLevel)lstItems.SelectedItem).Id);
+            SunLevel.DeleteSunLevelById(((SunLevel)dtgItems.SelectedItem).Id);
 
             RefreshList();
         }
 
-        private void lstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             butDelete.IsEnabled = false;
 
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            butDelete.IsEnabled = Convert.ToInt32(((SunLevel)lstItems.SelectedItem).Id) != -1;
+            butDelete.IsEnabled = Convert.ToInt32(((SunLevel)dtgItems.SelectedItem).Id) != -1;
         }
     }
 }

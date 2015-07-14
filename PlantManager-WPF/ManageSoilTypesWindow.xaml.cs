@@ -43,25 +43,25 @@ namespace PlantManager_WPF
         {
             SoilType[] soilTypes = SoilType.GetAllSoilTypes();
 
-            lstItems.ItemsSource = soilTypes;
+            dtgItems.ItemsSource = soilTypes;
         }
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            SoilType.DeleteSoilTypeById(((SoilType)lstItems.SelectedItem).Id);
+            SoilType.DeleteSoilTypeById(((SoilType)dtgItems.SelectedItem).Id);
 
             RefreshList();
         }
 
-        private void lstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             butDelete.IsEnabled = false;
 
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            butDelete.IsEnabled = Convert.ToInt32(((SoilType)lstItems.SelectedItem).Id) != -1;
+            butDelete.IsEnabled = Convert.ToInt32(((SoilType)dtgItems.SelectedItem).Id) != -1;
         }
     }
 }

@@ -110,7 +110,7 @@ namespace PlantManager_WPF
         {
             DataTable dtPlants = Db.Query("SELECT * FROM Plants");
 
-            List<Plant> lstPlants = new List<Plant>();
+            List<Plant> dtgPlants = new List<Plant>();
 
             for (int i = 0; i < dtPlants.Rows.Count; i++)
             {
@@ -119,11 +119,11 @@ namespace PlantManager_WPF
 
                 if (plant.Name.Contains(searchString))
                 {
-                    lstPlants.Add(plant);
+                    dtgPlants.Add(plant);
                 }
             }
 
-            return lstPlants.ToArray();
+            return dtgPlants.ToArray();
         }
 
         public static void DeletePlantById(int id)

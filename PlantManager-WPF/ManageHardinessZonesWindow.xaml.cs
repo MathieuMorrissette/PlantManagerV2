@@ -43,25 +43,25 @@ namespace PlantManager_WPF
         {
             HardinessZone[] hardinessZones = HardinessZone.GetAllHardinessZones();
 
-            lstItems.ItemsSource = hardinessZones;
+            dtgItems.ItemsSource = hardinessZones;
         }
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            HardinessZone.DeleteHardinessZoneById(((HardinessZone)lstItems.SelectedItem).Id);
+            HardinessZone.DeleteHardinessZoneById(((HardinessZone)dtgItems.SelectedItem).Id);
 
             RefreshList();
         }
 
-        private void lstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             butDelete.IsEnabled = false;
 
-            if (lstItems.SelectedItems.Count <= 0) return;
+            if (dtgItems.SelectedItems.Count <= 0) return;
 
-            butDelete.IsEnabled = Convert.ToInt32(((HardinessZone)lstItems.SelectedItem).Id) != -1;
+            butDelete.IsEnabled = Convert.ToInt32(((HardinessZone)dtgItems.SelectedItem).Id) != -1;
         }
     }
 }

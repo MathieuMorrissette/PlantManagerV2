@@ -172,7 +172,7 @@ namespace PlantManager_WPF
         {
             Plant[] plants = Plant.GetAllPlant();
 
-            lstPlants.ItemsSource = plants;
+            dtgPlants.ItemsSource = plants;
         }
 
         public void RefreshPlant()
@@ -251,11 +251,11 @@ namespace PlantManager_WPF
                 }, null);
         }
 
-        private void lstPlants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgPlants_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lstPlants.SelectedItems.Count > 0)
+            if (dtgPlants.SelectedItems.Count > 0)
             {
-                Plant maPlante = (Plant)lstPlants.SelectedItem;
+                Plant maPlante = (Plant)dtgPlants.SelectedItem;
 
                 //Afficher un message si les modifications n'ont pas ete enregistres.
                 _mCurrentPlant = maPlante;
@@ -342,7 +342,7 @@ namespace PlantManager_WPF
             tcPlant.Visibility = Visibility.Hidden;
             Plant[] plants = Plant.GetAllPlantByNameContains(txtSearchField.Text);
 
-            lstPlants.ItemsSource = plants;
+            dtgPlants.ItemsSource = plants;
         }
 
         private void butAdd_Click(object sender, RoutedEventArgs e)
@@ -354,11 +354,11 @@ namespace PlantManager_WPF
 
         private void butDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (lstPlants.SelectedItems.Count <= 0) return;
+            if (dtgPlants.SelectedItems.Count <= 0) return;
 
-            Plant plant = (Plant)lstPlants.SelectedItem;
+            Plant plant = (Plant)dtgPlants.SelectedItem;
 
-            if (plant.Id.ToString() == _mCurrentPlant.Id.ToString())
+            if (_mCurrentPlant != null && plant.Id.ToString() == _mCurrentPlant.Id.ToString())
             {
                 _mCurrentPlant = null;
                 tcPlant.Visibility = Visibility.Hidden;
