@@ -56,11 +56,11 @@
             </TabItem>
             <TabItem x:Name="tpDetail" Header="Détails">
                 <Grid Background="#FFE5E5E5">
-                    <Controls:NumericUpDown x:Name="nudHeight" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,331,0" VerticalAlignment="Top" ValueChanged="CheckChanges"/>
+                    <Controls:NumericUpDown x:Name="nudHeight" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
                     <Label Content="Hauteur :" Margin="10,10,492,0" VerticalAlignment="Top"/>
                     <Label Content="Largeur :" Margin="10,41,492,0" VerticalAlignment="Top"/>
                     <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbPlantTypes" HorizontalAlignment="Left" Margin="23,289,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="1.208,5.409" SelectionChanged="CheckChanges"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id"  x:Name="cbSoilTypes" HorizontalAlignment="Left" Margin="276,41,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id"  x:Name="cbSoilTypes" Margin="276,41,0,0" VerticalAlignment="Top" SelectionChanged="CheckChanges" HorizontalAlignment="Left" Width="207"/>
                     <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbHardinessZones" HorizontalAlignment="Left" Margin="23,103,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
                     <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbShapes" HorizontalAlignment="Left" Margin="23,227,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
                     <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbSunLevels" HorizontalAlignment="Left" Margin="23,165,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
@@ -68,8 +68,8 @@
                     <Label Content="Zone de rusticité :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="220"/>
                     <Label Content="Niveau d'ensoleillement :" HorizontalAlignment="Left" Margin="13,134,0,0" VerticalAlignment="Top"/>
                     <Label Content="Forme :" HorizontalAlignment="Left" Margin="13,196,0,0" VerticalAlignment="Top" Width="217"/>
-                    <Label Content="Type de sol :" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top"/>
-                    <Controls:NumericUpDown x:Name="nudWidth" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,331,0" VerticalAlignment="Top" ValueChanged="CheckChanges"/>
+                    <Label Content="Type de sol :" Margin="260,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                    <Controls:NumericUpDown x:Name="nudWidth" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
                 </Grid>
             </TabItem>
         </TabControl>
