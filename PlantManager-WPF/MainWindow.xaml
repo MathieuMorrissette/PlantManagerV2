@@ -33,9 +33,9 @@
         <Button x:Name="butSearch" Content="Recherche" Margin="175,30,0,0" HorizontalAlignment="Left" Width="85" Height="31" VerticalAlignment="Top" Click="butSearch_Click"/>
         <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butAdd_Click"/>
         <Button x:Name="butDelete" Content="Supprimer" HorizontalAlignment="Left" Margin="175,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butDelete_Click"/>
-        <TabControl x:Name="tcPlant" Margin="265,26,10,45">
+        <TabControl x:Name="tcPlant" Margin="265,26,10,48">
             <TabItem x:Name="tpGeneral" Header="Général">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,6">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,2">
                     <Label x:Name="noname" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblName_Copy" Content="Genre :" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="lblName_Copy1" Content="Espèce :" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
@@ -73,7 +73,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="455,0,163,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
+        <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="452,0,166,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
         <DataGrid x:Name="dtgPlants" Margin="10,66,0,53" BorderThickness="1" HeadersVisibility="None" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="250" SelectionChanged="dtgPlants_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Width="*"/>
