@@ -74,9 +74,11 @@
             </TabItem>
         </TabControl>
         <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="452,0,166,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
-        <DataGrid x:Name="dtgPlants" Margin="10,66,0,53" BorderThickness="1" HeadersVisibility="None" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="250" SelectionChanged="dtgPlants_SelectionChanged">
+        <DataGrid  IsReadOnly="True" x:Name="dtgPlants" Margin="10,66,0,53" BorderThickness="1" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="250" SelectionChanged="dtgPlants_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Genus.Name}" Width="100"/>
+                <DataGridTextColumn Header="Espèce" Binding="{Binding Species}" Width="100"/>
+                <DataGridTextColumn Header="Cultivar" Binding="{Binding Cultivar}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
         <ProgressBar x:Name="pbLoading" IsIndeterminate="False" VerticalAlignment="Bottom" Height="10" Maximum="20"/>

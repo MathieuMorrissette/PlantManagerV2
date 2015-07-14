@@ -117,7 +117,7 @@ namespace PlantManager_WPF
                 DataRow row = dtPlants.Rows[i];
                 Plant plant = new Plant(Convert.ToInt32(row["PlantID"]));
 
-                if (plant.Name.Contains(searchString))
+                if (plant.Name.ToUpper().Contains(searchString.ToUpper()))
                 {
                     dtgPlants.Add(plant);
                 }
