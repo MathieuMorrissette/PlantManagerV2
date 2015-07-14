@@ -11,7 +11,7 @@
         WindowMinButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
         WindowMaxButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
         Style="{DynamicResource CleanWindowStyleKey}"
-        Title="Gestionnaire de plantes" Height="510" Width="850" BorderThickness="0" WindowStartupLocation="CenterScreen">
+        Title="Gestionnaire de plantes" Height="510" Width="917.164" BorderThickness="0" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Menu x:Name="menu" VerticalAlignment="Top" Grid.ColumnSpan="2">
@@ -29,59 +29,66 @@
             <MenuItem Header="À propos" Name="mnuAbout" Click="mnuAbout_Click"/>
 
         </Menu>
-        <TextBox x:Name="txtSearchField" HorizontalAlignment="Left" Height="23" Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
-        <Button x:Name="butSearch" Content="Recherche" Margin="175,30,0,0" HorizontalAlignment="Left" Width="85" Height="31" VerticalAlignment="Top" Click="butSearch_Click"/>
-        <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butAdd_Click"/>
-        <Button x:Name="butDelete" Content="Supprimer" HorizontalAlignment="Left" Margin="175,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butDelete_Click"/>
-        <TabControl x:Name="tcPlant" Margin="265,26,10,48">
-            <TabItem x:Name="tpGeneral" Header="Général">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,2">
-                    <Label x:Name="noname" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblName_Copy" Content="Genre :" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblName_Copy1" Content="Espèce :" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblName_Copy2" Content="Cultivar :" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblName_Copy3" Content="Description :" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblName" Content="Nom_De_La_Plante" HorizontalAlignment="Left" Margin="91,11,0,0" VerticalAlignment="Top" Width="205"/>
-                    <Image x:Name="imgImage" Margin="301,11,10,119" MouseDown="imgImage_MouseDown"/>
-                    <ComboBox x:Name="cbGenus" HorizontalAlignment="Left" Margin="91,42,0,0" VerticalAlignment="Top" Width="205" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="CheckChanges"/>
-                    <TextBox x:Name="txtSpecies" HorizontalAlignment="Left" Height="23" Margin="91,69,0,0"  Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
-                    <TextBox x:Name="txtCultivar" HorizontalAlignment="Left" Height="23" Margin="91,97,0,0" Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
-                    <TextBox x:Name="txtDescription" Margin="10,155,0,47" TextWrapping="Wrap" Text="TextBox" TextChanged="CheckChanges" HorizontalAlignment="Left" Width="286"/>
-                    <Button x:Name="btLeftImage" Content="&lt;" Margin="301,0,0,85" Height="29" VerticalAlignment="Bottom" Click="btLeftImage_Click" HorizontalAlignment="Left" Width="75"/>
-                    <Button x:Name="btRightImage" Content="&gt;" Margin="0,0,10,85" HorizontalAlignment="Right" Width="75" Height="29" VerticalAlignment="Bottom" Click="btRightImage_Click"/>
-                    <Button x:Name="btAddImage" Content="Ajouter une image" Margin="301,0,10,47" Height="33" VerticalAlignment="Bottom" Click="btAddImage_Click"/>
-                    <Button x:Name="btDeleteImage" Content="Supprimer" Margin="381,0,95,85" Height="29" VerticalAlignment="Bottom" Click="btDeleteImage_Click"/>
-                    <Button x:Name="butSearchImage" Content="Rechercher une image" Margin="10,0,0,9" Height="33" VerticalAlignment="Bottom" Click="butSearchImage_Click" HorizontalAlignment="Left" Width="286"/>
-                </Grid>
-            </TabItem>
-            <TabItem x:Name="tpDetail" Header="Détails">
-                <Grid Background="#FFE5E5E5">
-                    <Controls:NumericUpDown x:Name="nudHeight" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
-                    <Label Content="Hauteur :" Margin="10,10,492,0" VerticalAlignment="Top"/>
-                    <Label Content="Largeur :" Margin="10,41,492,0" VerticalAlignment="Top"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbPlantTypes" HorizontalAlignment="Left" Margin="23,289,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="1.208,5.409" SelectionChanged="CheckChanges"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id"  x:Name="cbSoilTypes" Margin="276,41,0,0" VerticalAlignment="Top" SelectionChanged="CheckChanges" HorizontalAlignment="Left" Width="207"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbHardinessZones" HorizontalAlignment="Left" Margin="23,103,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbShapes" HorizontalAlignment="Left" Margin="23,227,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
-                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbSunLevels" HorizontalAlignment="Left" Margin="23,165,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
-                    <Label Content="Type de plante :" HorizontalAlignment="Left" Margin="13,258,0,0" VerticalAlignment="Top" Width="217"/>
-                    <Label Content="Zone de rusticité :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="220"/>
-                    <Label Content="Niveau d'ensoleillement :" HorizontalAlignment="Left" Margin="13,134,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Forme :" HorizontalAlignment="Left" Margin="13,196,0,0" VerticalAlignment="Top" Width="217"/>
-                    <Label Content="Type de sol :" Margin="260,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
-                    <Controls:NumericUpDown x:Name="nudWidth" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
-        <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="452,0,166,15" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click"/>
-        <DataGrid  IsReadOnly="True" x:Name="dtgPlants" Margin="10,66,0,53" BorderThickness="1" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="250" SelectionChanged="dtgPlants_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Genus.Name}" Width="100"/>
-                <DataGridTextColumn Header="Espèce" Binding="{Binding Species}" Width="100"/>
-                <DataGridTextColumn Header="Cultivar" Binding="{Binding Cultivar}" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="290" />
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="249*" />
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" Margin="0,30,0,15" />
+            <TextBox x:Name="txtSearchField" Height="26" Margin="10,33,98,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Button x:Name="butSearch" Content="Recherche" Margin="0,30,8,0" Height="31" VerticalAlignment="Top" Click="butSearch_Click" HorizontalAlignment="Right" Width="85"/>
+            <Button x:Name="butAdd" Content="Ajouter" HorizontalAlignment="Left" Margin="10,0,0,15" Width="85" Height="33" VerticalAlignment="Bottom" Click="butAdd_Click"/>
+            <Button x:Name="butDelete" Content="Supprimer" Margin="0,0,8,15" Height="33" VerticalAlignment="Bottom" Click="butDelete_Click" HorizontalAlignment="Right" Width="85"/>
+            <TabControl x:Name="tcPlant" Margin="10,10,10,64" Grid.Column="2">
+                <TabItem x:Name="tpGeneral" Header="Général">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,0,2">
+                        <Label x:Name="noname" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblName_Copy" Content="Genre :" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblName_Copy1" Content="Espèce :" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblName_Copy2" Content="Cultivar :" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblName_Copy3" Content="Description :" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblName" Content="Nom_De_La_Plante" HorizontalAlignment="Left" Margin="91,11,0,0" VerticalAlignment="Top" Width="205"/>
+                        <Image x:Name="imgImage" Margin="301,11,10,119" MouseDown="imgImage_MouseDown"/>
+                        <ComboBox x:Name="cbGenus" HorizontalAlignment="Left" Margin="91,42,0,0" VerticalAlignment="Top" Width="205" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="CheckChanges"/>
+                        <TextBox x:Name="txtSpecies" HorizontalAlignment="Left" Height="23" Margin="91,69,0,0"  Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
+                        <TextBox x:Name="txtCultivar" HorizontalAlignment="Left" Height="23" Margin="91,97,0,0" Text="TextBox" VerticalAlignment="Top" Width="205" TextChanged="CheckChanges"/>
+                        <TextBox x:Name="txtDescription" Margin="10,155,0,47" TextWrapping="Wrap" Text="TextBox" TextChanged="CheckChanges" HorizontalAlignment="Left" Width="286"/>
+                        <Button x:Name="btLeftImage" Content="&lt;" Margin="301,0,0,85" Height="29" VerticalAlignment="Bottom" Click="btLeftImage_Click" HorizontalAlignment="Left" Width="75"/>
+                        <Button x:Name="btRightImage" Content="&gt;" Margin="0,0,10,85" HorizontalAlignment="Right" Width="75" Height="29" VerticalAlignment="Bottom" Click="btRightImage_Click"/>
+                        <Button x:Name="btAddImage" Content="Ajouter une image" Margin="301,0,10,47" Height="33" VerticalAlignment="Bottom" Click="btAddImage_Click"/>
+                        <Button x:Name="btDeleteImage" Content="Supprimer" Margin="381,0,95,85" Height="29" VerticalAlignment="Bottom" Click="btDeleteImage_Click"/>
+                        <Button x:Name="butSearchImage" Content="Rechercher une image" Margin="10,0,0,9" Height="33" VerticalAlignment="Bottom" Click="butSearchImage_Click" HorizontalAlignment="Left" Width="286"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tpDetail" Header="Détails">
+                    <Grid Background="#FFE5E5E5">
+                        <Controls:NumericUpDown x:Name="nudHeight" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,10,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
+                        <Label Content="Hauteur :" Margin="10,10,492,0" VerticalAlignment="Top"/>
+                        <Label Content="Largeur :" Margin="10,41,492,0" VerticalAlignment="Top"/>
+                        <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbPlantTypes" HorizontalAlignment="Left" Margin="23,289,0,0" VerticalAlignment="Top" Width="207" RenderTransformOrigin="1.208,5.409" SelectionChanged="CheckChanges"/>
+                        <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id"  x:Name="cbSoilTypes" Margin="276,41,0,0" VerticalAlignment="Top" SelectionChanged="CheckChanges" HorizontalAlignment="Left" Width="207"/>
+                        <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbHardinessZones" HorizontalAlignment="Left" Margin="23,103,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
+                        <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbShapes" HorizontalAlignment="Left" Margin="23,227,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
+                        <ComboBox DisplayMemberPath="Name" SelectedValuePath="Id" x:Name="cbSunLevels" HorizontalAlignment="Left" Margin="23,165,0,0" VerticalAlignment="Top" Width="207" SelectionChanged="CheckChanges"/>
+                        <Label Content="Type de plante :" HorizontalAlignment="Left" Margin="13,258,0,0" VerticalAlignment="Top" Width="217"/>
+                        <Label Content="Zone de rusticité :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="220"/>
+                        <Label Content="Niveau d'ensoleillement :" HorizontalAlignment="Left" Margin="13,134,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Forme :" HorizontalAlignment="Left" Margin="13,196,0,0" VerticalAlignment="Top" Width="217"/>
+                        <Label Content="Type de sol :" Margin="260,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                        <Controls:NumericUpDown x:Name="nudWidth" Minimum = "0" Maximum = "10000" Interval = "1" Margin="74,41,0,0" VerticalAlignment="Top" ValueChanged="CheckChanges" HorizontalAlignment="Left" Width="156"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Button x:Name="butSaveChanges" Content="Enregistrer les modifications" Margin="148,0,176,26" RenderTransformOrigin="3.093,0.4" Height="33" VerticalAlignment="Bottom" Click="butSaveChanges_Click" Grid.Column="2" HorizontalAlignment="Center" Width="330"/>
+            <DataGrid  IsReadOnly="True" x:Name="dtgPlants" Margin="10,66,8,53" BorderThickness="1" AutoGenerateColumns="False" SelectionChanged="dtgPlants_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nom" Binding="{Binding Genus.Name}" Width="100"/>
+                    <DataGridTextColumn Header="Espèce" Binding="{Binding Species}" Width="100"/>
+                    <DataGridTextColumn Header="Cultivar" Binding="{Binding Cultivar}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
         <ProgressBar x:Name="pbLoading" IsIndeterminate="False" VerticalAlignment="Bottom" Height="10" Maximum="20"/>
-
     </Grid>
 </Controls:MetroWindow>

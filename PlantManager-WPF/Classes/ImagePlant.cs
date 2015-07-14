@@ -71,7 +71,6 @@ namespace PlantManager_WPF
             }
             catch (Exception ex)
             {
-                //LogManager.LogSilentError()
             }
         }
 
