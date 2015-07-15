@@ -6,7 +6,7 @@
         GlowBrush="{DynamicResource AccentColorBrush}"
         Title="À propos" Height="154" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label  Content="Gestionnaire de plantes V0.9.5 Alpha"  Margin="37,24,41,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="214"/>
+        <Label  Content="Gestionnaire de plantes V0.9.5.1 Alpha"  Margin="37,24,41,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="214"/>
         <Label  Content="Mathieu Morrissette"  Margin="96,55,80,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
         <Label  Content="WTPL"  Margin="134,81,118,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
