@@ -11,7 +11,7 @@
         WindowMinButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
         WindowMaxButtonStyle="{DynamicResource CleanMinMaxWindowButtonStyle}"
         Style="{DynamicResource CleanWindowStyleKey}"
-        Title="Gestionnaire de plantes" Height="510" Width="917.164" BorderThickness="0" WindowStartupLocation="CenterScreen">
+        Title="Gestionnaire de plantes" Height="510" Width="917.164" BorderThickness="0" WindowStartupLocation="CenterScreen" Icon="AppIcon.ico">
 
     <Grid>
         <Menu x:Name="menu" VerticalAlignment="Top" Grid.ColumnSpan="2">
